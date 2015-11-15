@@ -7,18 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LimitLine;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private LineChart lineChart;
-    private BarChart barChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         lineChart = (LineChart) findViewById(R.id.lineChart);
         lineChart.setDrawGridBackground(false);
         lineChart.setDescription("Teplota");
+        lineChart.setDescriptionColor(Color.rgb(255, 255, 255));
         lineChart.setNoDataTextDescription("Chybajuce data.");
         lineChart.setTouchEnabled(true);
         lineChart.setDragEnabled(true);
@@ -35,75 +37,81 @@ public class MainActivity extends AppCompatActivity {
         lineChart.setPinchZoom(true);
 
         YAxis leftAxis = lineChart.getAxisLeft();
-        leftAxis.removeAllLimitLines(); // reset all limit lines to avoid overlapping lines
-        leftAxis.setAxisMaxValue(110f);
+        leftAxis.setAxisMaxValue(50f);
         leftAxis.setAxisMinValue(-20f);
         leftAxis.setStartAtZero(false);
+        leftAxis.setEnabled(false);
+
+        YAxis rightAxis = lineChart.getAxisRight();
+        rightAxis.setEnabled(false);
+
+
+        LimitLine limitLine = new LimitLine(0);
+        limitLine.setLabel("0");
+        limitLine.setTextSize(7f);
+        limitLine.setTextColor(Color.rgb(255, 255, 255));
+        limitLine.setLineColor(Color.rgb(255, 255, 255));
+        leftAxis.addLimitLine(limitLine);
+
+        leftAxis.setDrawLimitLinesBehindData(true);
         leftAxis.enableGridDashedLine(10f, 10f, 0f);
 
-        // limit lines are drawn behind data (and not on top)
-        leftAxis.setDrawLimitLinesBehindData(true);
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setTextColor(Color.rgb(255, 255, 255));
+        xAxis.setEnabled(true);
 
-        lineChart.getAxisRight().setEnabled(false);
+        generateDataLine();
 
-        generateDataLine(1);
+        Legend l = lineChart.getLegend();
+        l.setEnabled(false);
 
         lineChart.animateX(2500, Easing.EasingOption.EaseInOutQuart);
     }
 
-    private void generateDataLine(int cnt) {
+    private void generateDataLine() {
 
         ArrayList<Entry> e1 = new ArrayList<>();
 
         for (int i = 0; i < 12; i++) {
-            e1.add(new Entry((int) (Math.random() * 65) + 40, i));
+            e1.add(new Entry((int) (Math.random() * 15) + 20, i));
         }
 
-        LineDataSet d1 = new LineDataSet(e1, "DataSet " + cnt);
+        LineDataSet d1 = new LineDataSet(e1, "Teplota");
+        d1.setDrawCircleHole(false);
         d1.setLineWidth(2.5f);
-        d1.setCircleSize(5.5f);
-        d1.setHighLightColor(Color.rgb(244, 117, 117));
-        d1.setDrawValues(false);
-
-        ArrayList<Entry> e2 = new ArrayList<>();
-
-        for (int i = 0; i < 12; i++) {
-            e2.add(new Entry(e1.get(i).getVal() - 30, i));
-        }
-
-        LineDataSet d2 = new LineDataSet(e2, "DataSet " + cnt);
-        d2.setLineWidth(2.5f);
-        d2.setCircleSize(5.5f);
-        d2.setHighLightColor(Color.rgb(244, 117, 117));
-        d2.setColor(ColorTemplate.VORDIPLOM_COLORS[0]);
-        d2.setCircleColor(ColorTemplate.VORDIPLOM_COLORS[0]);
-        d2.setDrawValues(false);
+        d1.setCircleSize(7f);
+        d1.setCircleColor(Color.rgb(255, 255, 255));
+        d1.setColor(Color.rgb(255, 255, 255));
+        d1.setValueTextColor(Color.rgb(255, 255, 255));
+        d1.setValueTextSize(10f);
+        d1.setDrawValues(true);
 
         ArrayList<LineDataSet> sets = new ArrayList<>();
         sets.add(d1);
-        sets.add(d2);
 
-        LineData cd = new LineData(getMonths(), sets);
+        LineData cd = new LineData(getHours(), sets);
+        cd.setValueTextColor(Color.rgb(255, 255, 255));
         lineChart.setData(cd);
     }
 
-    private ArrayList<String> getMonths() {
+    private ArrayList<String> getHours() {
 
-        ArrayList<String> m = new ArrayList<>();
-        m.add("Jan");
-        m.add("Feb");
-        m.add("Mar");
-        m.add("Apr");
-        m.add("May");
-        m.add("Jun");
-        m.add("Jul");
-        m.add("Aug");
-        m.add("Sep");
-        m.add("Okt");
-        m.add("Nov");
-        m.add("Dec");
+        ArrayList<String> h = new ArrayList<>();
+        h.add("00");
+        h.add("02");
+        h.add("04");
+        h.add("06");
+        h.add("08");
+        h.add("10");
+        h.add("12");
+        h.add("14");
+        h.add("16");
+        h.add("18");
+        h.add("20");
+        h.add("22");
 
-        return m;
+        return h;
     }
 
 }

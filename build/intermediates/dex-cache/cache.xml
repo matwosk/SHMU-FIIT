@@ -2,9 +2,23 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jar="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
         jumboMode="false"
         revision="21.1.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-2fa66bfdbdfe6e4460323a047791c0175fab1253.jar" />
+    </item>
+    <item
+        jar="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-2fa66bfdbdfe6e4460323a047791c0175fab1253.jar" />
+    </item>
+    <item
+        jar="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
         sha1="5c5699834e9722f1c288fea2de82725d078ba127">
         <dex dex="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\pre-dexed\debug\classes-15fa863d842a1f872b103947bc15d72a12263958.jar" />
     </item>
@@ -14,6 +28,34 @@
         revision="21.1.2"
         sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
         <dex dex="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\pre-dexed\debug\classes-fa154c0d3280085a186055aa40df9378550d57cc.jar" />
+    </item>
+    <item
+        jar="C:\Users\Martin\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1-3fd842a0c125f505398b3d95ab7c4b89da4119e1.jar" />
+    </item>
+    <item
+        jar="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\pre-dexed\debug\classes-fa154c0d3280085a186055aa40df9378550d57cc.jar" />
+    </item>
+    <item
+        jar="C:\Users\Martin\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v2.1.6\b036abbb61656165da99cf44898e4b9123687e65\MPAndroidChart-v2.1.6.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b036abbb61656165da99cf44898e4b9123687e65">
+        <dex dex="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\pre-dexed\debug\MPAndroidChart-v2.1.6-eb409795dff8d06ae06837d2400e87fb46a4a26f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\pre-dexed\debug\classes-15fa863d842a1f872b103947bc15d72a12263958.jar" />
     </item>
     <item
         jar="C:\Users\Martin\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
@@ -28,13 +70,6 @@
         revision="21.1.2"
         sha1="b036abbb61656165da99cf44898e4b9123687e65">
         <dex dex="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\pre-dexed\debug\MPAndroidChart-v2.1.6-eb409795dff8d06ae06837d2400e87fb46a4a26f.jar" />
-    </item>
-    <item
-        jar="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="C:\Users\Martin\AndroidStudioProjects\SHMU-FIIT\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-2fa66bfdbdfe6e4460323a047791c0175fab1253.jar" />
     </item>
 
 </items>
