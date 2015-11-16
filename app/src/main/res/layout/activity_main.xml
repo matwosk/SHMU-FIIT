@@ -8,14 +8,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageButton
             android:id="@+id/ib_menuButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="15dp"
             android:background="@null"
             android:padding="5dp"
             android:src="@drawable/menu_icon"/>
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="15dp"
             android:background="@null"
             android:padding="5dp"
             android:src="@drawable/plus_icon"/>
@@ -63,8 +63,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_locationName"
-            android:layout_marginTop="50dp"
             android:layout_marginLeft="240px"
+            android:layout_marginTop="60dp"
             android:src="@drawable/poloblacno_icon"/>
 
 
@@ -129,7 +129,6 @@
             android:textColor="@color/white"
             android:textSize="20sp"/>
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -162,11 +161,11 @@
                     android:background="#88FFFFFF"/>
 
                 <ImageView
-                    android:layout_marginTop="10dp"
                     android:layout_width="1px"
                     android:layout_height="120dp"
                     android:layout_alignParentRight="true"
                     android:layout_below="@id/iv_line1"
+                    android:layout_marginTop="10dp"
                     android:background="#88FFFFFF"/>
 
                 <ImageView
@@ -182,10 +181,10 @@
                     android:id="@+id/tv_timeTemperature1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
                     android:layout_alignTop="@id/iv_timeWeatherIcon1"
                     android:layout_toRightOf="@id/iv_timeWeatherIcon1"
                     android:text="16°"
+                    android:textColor="@color/white"
                     />
 
                 <TextView
@@ -245,11 +244,11 @@
                     android:background="#88FFFFFF"/>
 
                 <ImageView
-                    android:layout_marginTop="10dp"
                     android:layout_width="1px"
                     android:layout_height="120dp"
                     android:layout_alignParentRight="true"
                     android:layout_below="@id/iv_line2"
+                    android:layout_marginTop="10dp"
                     android:background="#88FFFFFF"/>
 
                 <ImageView
@@ -265,10 +264,10 @@
                     android:id="@+id/tv_timeTemperature2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
                     android:layout_alignTop="@id/iv_timeWeatherIcon2"
                     android:layout_toRightOf="@id/iv_timeWeatherIcon2"
                     android:text="12°"
+                    android:textColor="@color/white"
                     />
 
                 <TextView
@@ -340,10 +339,10 @@
                     android:id="@+id/tv_timeTemperature3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
                     android:layout_alignTop="@id/iv_timeWeatherIcon3"
                     android:layout_toRightOf="@id/iv_timeWeatherIcon3"
                     android:text="9°"
+                    android:textColor="@color/white"
                     />
 
                 <TextView
@@ -379,22 +378,31 @@
                     android:textColor="@color/white"
                     />
             </RelativeLayout>
-
-
         </LinearLayout>
-
 
         <TextView
             android:layout_width="1dp"
             android:layout_height="900dp"
             android:layout_below="@id/iv_dayLine"/>
 
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:layout_marginTop="900dp">
 
-        <com.github.mikephil.charting.charts.CombinedChart
-            android:id="@+id/combinedChart"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="900dp"
-            android:visibility="visible"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.github.mikephil.charting.charts.CombinedChart
+                    android:id="@+id/combinedChart"
+                    android:layout_width="1200dp"
+                    android:layout_height="300dp"
+
+                    android:visibility="visible"/>
+            </RelativeLayout>
+        </HorizontalScrollView>
+
     </RelativeLayout>
 </ScrollView>
