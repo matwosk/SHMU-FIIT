@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         CombinedData data = new CombinedData(getHours());
         data.setData(generateTempData());
-        data.setData(generateBarData());
+        data.setData(generateRainData());
 
         combinedChart.setData(data);
         combinedChart.invalidate();
@@ -97,11 +97,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         LineDataSet set = new LineDataSet(entries, "Teplota");
-        set.setDrawCircleHole(false);
+        set.setDrawCircleHole(true);
         set.setLineWidth(2.5f);
         set.setCircleSize(7f);
-        set.setCircleColor(Color.rgb(255, 255, 255));
-        set.setColor(Color.rgb(255, 255, 255));
+        set.setCircleColor(Color.argb(255, 255, 255, 255));
+        set.setColor(Color.argb(200, 255, 255, 255));
         set.setValueTextColor(Color.rgb(255, 255, 255));
         set.setValueTextSize(10f);
         set.setDrawCubic(true);
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         return lineData;
     }
 
-    private BarData generateBarData() {
+    private BarData generateRainData() {
 
         ArrayList<BarEntry> entries = new ArrayList<>();
 
@@ -122,10 +122,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         BarDataSet set = new BarDataSet(entries, "Zrazky");
-        set.setColor(Color.rgb(255, 255, 255));
-        set.setValueTextColor(Color.rgb(255, 255, 255));
+        set.setColor(Color.argb(100, 255, 255, 255));
+        set.setValueTextColor(Color.argb(100, 255, 255, 255));
         set.setValueTextSize(10f);
-        set.setHighLightAlpha(100);
 
         BarData barData = new BarData();
         barData.addDataSet(set);
