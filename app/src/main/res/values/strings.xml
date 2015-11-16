@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">SHMU</string>
+    <string name="app_name">SHMU - Počasie</string>
+    <string name="stupen">°</string>
+    <string name="vietor">Vietor: SZ 3m/s</string>
+    <string name="zrazky">Zrážky: 0%</string>
+
+    <string name="v_noci">V noci</string>
+    <string name="rano">Ráno</string>
+    <string name="poludnie">Poludnie</string>
+    <string name="popoludnie">Popoludnie</string>
+    <string name="vecer">Večer</string>
+
 </resources>

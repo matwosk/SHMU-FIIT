@@ -1,68 +1,400 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/gradient"
-    tools:context=".MainActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient"
+            tools:context=".MainActivity">
 
-    <ImageButton
-        android:id="@+id/ib_menuButton"
-        android:layout_width="wrap_content"
-        android:src="@drawable/menu_icon"
-        android:layout_marginTop="13dp"
-        android:layout_marginLeft="5dp"
-        android:background="@null"
-        android:padding="5dp"
-        android:layout_height="wrap_content"/>
-
-
-    <ImageButton
-        android:id="@+id/ib_plusButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:background="@null"
-        android:src="@drawable/plus_icon"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="13dp"
-        android:layout_marginRight="5dp"/>
-
-    <TextView
-        android:id="@+id/tv_locationName"
-        android:layout_toRightOf="@id/ib_menuButton"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:gravity="center_horizontal"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/ib_plusButton"
-        android:layout_marginRight="20dp"
-        android:text="Bratislava - Letisko a este nejaky velmi dlhy nazov ktory pretecie"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold"
-        android:textSize="14sp"/>
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/ib_menuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="13dp"
+            android:background="@null"
+            android:padding="5dp"
+            android:src="@drawable/menu_icon"/>
 
 
+        <ImageButton
+            android:id="@+id/ib_plusButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="13dp"
+            android:background="@null"
+            android:padding="5dp"
+            android:src="@drawable/plus_icon"/>
+
+        <TextView
+            android:id="@+id/tv_locationName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toLeftOf="@id/ib_plusButton"
+            android:layout_toRightOf="@id/ib_menuButton"
+            android:gravity="center_horizontal"
+            android:text="Bratislava - Letisko"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
 
+        <ImageView
+            android:id="@+id/iv_dayLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_locationName"
+            android:layout_marginTop="100dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/dayline"/>
 
-    <ImageView
-        android:layout_marginTop="60dp"
-        android:layout_below="@id/tv_locationName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/dayline"/>
+        <ImageView
+            android:id="@+id/iv_currentWeatherIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_locationName"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="240px"
+            android:src="@drawable/poloblacno_icon"/>
 
 
+        <TextView
+            android:id="@+id/tv_currentTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_dayLine"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-light"
+            android:text="18"
+            android:textColor="@color/white"
+            android:textSize="62sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/tv_currentTemperature"
+            android:layout_toRightOf="@id/tv_currentTemperature"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/stupen"
+            android:textColor="@color/white"
+            android:textSize="62sp"/>
+
+        <TextView
+            android:id="@+id/tv_weatherState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_currentTemperature"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="6dp"
+            android:gravity="center_horizontal"
+            android:text="Poloblačno"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_windState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_weatherState"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/vietor"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
 
 
+        <TextView
+            android:id="@+id/tv_rainState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_windState"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/zrazky"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
 
-    <com.github.mikephil.charting.charts.CombinedChart
-        android:layout_marginTop="200dp"
-        android:visibility="invisible"
-        android:id="@+id/combinedChart"
-        android:layout_width="match_parent"
-        android:layout_height="400dp" />
-</RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_rainState"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_dayPart1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/popoludnie"
+                    android:textColor="@color/white"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@id/tv_dayPart1"
+                    android:layout_marginTop="5dp"
+                    android:background="#88FFFFFF"/>
+
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="1px"
+                    android:layout_height="120dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/iv_line1"
+                    android:background="#88FFFFFF"/>
+
+                <ImageView
+                    android:id="@+id/iv_timeWeatherIcon1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/iv_line1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/poloblacno_icon"/>
+
+                <TextView
+                    android:id="@+id/tv_timeTemperature1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_alignTop="@id/iv_timeWeatherIcon1"
+                    android:layout_toRightOf="@id/iv_timeWeatherIcon1"
+                    android:text="16°"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_timeWeatherState1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_timeWeatherIcon1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Poloblačno"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_timeWindState1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_timeWeatherState1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:text="Vietor: SZ 4m/s"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_timeRainState1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_timeWindState1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:text="Zrážky: 0%"
+                    android:textColor="@color/white"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_dayPart2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/vecer"
+                    android:textColor="@color/white"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@id/tv_dayPart2"
+                    android:layout_marginTop="5dp"
+                    android:background="#88FFFFFF"/>
+
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="1px"
+                    android:layout_height="120dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/iv_line2"
+                    android:background="#88FFFFFF"/>
+
+                <ImageView
+                    android:id="@+id/iv_timeWeatherIcon2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/iv_line2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/poloblacno_icon"/>
+
+                <TextView
+                    android:id="@+id/tv_timeTemperature2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_alignTop="@id/iv_timeWeatherIcon2"
+                    android:layout_toRightOf="@id/iv_timeWeatherIcon2"
+                    android:text="12°"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_timeWeatherState2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_timeWeatherIcon2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Dážď"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_timeWindState2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_timeWeatherState2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:text="Vietor: SZ 12m/s"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_timeRainState2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_timeWindState2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:text="Zrážky: 95%"
+                    android:textColor="@color/white"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_dayPart3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/v_noci"
+                    android:textColor="@color/white"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_line3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@id/tv_dayPart3"
+                    android:layout_marginTop="5dp"
+                    android:background="#88FFFFFF"/>
+
+                <ImageView
+                    android:id="@+id/iv_timeWeatherIcon3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/iv_line3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/poloblacno_icon"/>
+
+                <TextView
+                    android:id="@+id/tv_timeTemperature3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_alignTop="@id/iv_timeWeatherIcon3"
+                    android:layout_toRightOf="@id/iv_timeWeatherIcon3"
+                    android:text="9°"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_timeWeatherState3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_timeWeatherIcon3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Hmla"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_timeWindState3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_timeWeatherState3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:text="Vietor: SZ 1m/s"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_timeRainState3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_timeWindState3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:text="Zrážky: 20%"
+                    android:textColor="@color/white"
+                    />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="900dp"
+            android:layout_below="@id/iv_dayLine"/>
+
+
+        <com.github.mikephil.charting.charts.CombinedChart
+            android:id="@+id/combinedChart"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="900dp"
+            android:visibility="gone"/>
+    </RelativeLayout>
+</ScrollView>
