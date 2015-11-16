@@ -10,8 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/lineChart"
+    <com.github.mikephil.charting.charts.CombinedChart
+        android:id="@+id/combinedChart"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="400dp" />
 </RelativeLayout>
