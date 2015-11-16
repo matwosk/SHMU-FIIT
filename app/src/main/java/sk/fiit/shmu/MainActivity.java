@@ -13,7 +13,6 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.CombinedData;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
@@ -21,8 +20,11 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
+import static sk.fiit.shmu.JsonParser.getHours;
 import static sk.fiit.shmu.JsonParser.getJsonObject;
+import static sk.fiit.shmu.JsonParser.getRain;
 import static sk.fiit.shmu.JsonParser.getStationName;
+import static sk.fiit.shmu.JsonParser.getTemperature;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -75,9 +77,14 @@ public class MainActivity extends AppCompatActivity {
         xAxis.setTextColor(Color.rgb(255, 255, 255));
         xAxis.setEnabled(true);
 
-        CombinedData data = new CombinedData(getHours());
-        data.setData(generateTempData());
-        data.setData(generateRainData());
+        CombinedData data = null;
+        try {
+            data = new CombinedData(getHours(getJsonObject()));
+            data.setData(generateTempData());
+            data.setData(generateRainData());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         combinedChart.setData(data);
         combinedChart.invalidate();
@@ -88,15 +95,9 @@ public class MainActivity extends AppCompatActivity {
         combinedChart.animateX(2500, Easing.EasingOption.EaseInOutQuart);
     }
 
-    private LineData generateTempData() {
+    private LineData generateTempData() throws JSONException {
 
-        ArrayList<Entry> entries = new ArrayList<>();
-
-        for (int i = 0; i < 12; i++) {
-            entries.add(new Entry((int) (Math.random() * 15) + 20, i));
-        }
-
-        LineDataSet set = new LineDataSet(entries, "Teplota");
+        LineDataSet set = new LineDataSet(getTemperature(getJsonObject()), "Teplota");
         set.setDrawCircleHole(true);
         set.setLineWidth(2.5f);
         set.setCircleSize(7f);
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         return lineData;
     }
 
-    private BarData generateRainData() {
+    private BarData generateRainData() throws JSONException {
 
         ArrayList<BarEntry> entries = new ArrayList<>();
 
@@ -121,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             entries.add(new BarEntry((int) (Math.random() * 5), i));
         }
 
-        BarDataSet set = new BarDataSet(entries, "Zrazky");
+        BarDataSet set = new BarDataSet(getRain(getJsonObject()), "Zrazky");
         set.setColor(Color.argb(100, 255, 255, 255));
         set.setValueTextColor(Color.argb(100, 255, 255, 255));
         set.setValueTextSize(10f);
@@ -130,25 +131,6 @@ public class MainActivity extends AppCompatActivity {
         barData.addDataSet(set);
 
         return barData;
-    }
-
-    private ArrayList<String> getHours() {
-
-        ArrayList<String> h = new ArrayList<>();
-        h.add("00");
-        h.add("02");
-        h.add("04");
-        h.add("06");
-        h.add("08");
-        h.add("10");
-        h.add("12");
-        h.add("14");
-        h.add("16");
-        h.add("18");
-        h.add("20");
-        h.add("22");
-
-        return h;
     }
 
 }
