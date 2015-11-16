@@ -1,6 +1,7 @@
 package sk.fiit.shmu;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -11,14 +12,14 @@ import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.CombinedData;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 
 import org.json.JSONException;
-
-import java.util.ArrayList;
 
 import static sk.fiit.shmu.JsonParser.getHours;
 import static sk.fiit.shmu.JsonParser.getJsonObject;
@@ -27,8 +28,6 @@ import static sk.fiit.shmu.JsonParser.getStationName;
 import static sk.fiit.shmu.JsonParser.getTemperature;
 
 public class MainActivity extends AppCompatActivity {
-
-    private CombinedChart combinedChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,20 +42,15 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        combinedChart = (CombinedChart) findViewById(R.id.combinedChart);
+        CombinedChart combinedChart = (CombinedChart) findViewById(R.id.combinedChart);
         combinedChart.setDrawGridBackground(false);
         combinedChart.setDescription(name);
         combinedChart.setDescriptionPosition(250f, 20f);
         combinedChart.setDescriptionColor(Color.rgb(255, 255, 255));
         combinedChart.setNoDataTextDescription("Chybajuce data.");
-        combinedChart.setTouchEnabled(true);
-        combinedChart.setDragEnabled(true);
-        combinedChart.setScaleEnabled(true);
-        combinedChart.setPinchZoom(true);
+        combinedChart.setTouchEnabled(false);
 
         YAxis leftAxis = combinedChart.getAxisLeft();
-        leftAxis.setAxisMaxValue(50f);
-        leftAxis.setAxisMinValue(-20f);
         leftAxis.setEnabled(false);
 
         YAxis rightAxis = combinedChart.getAxisRight();
@@ -105,6 +99,14 @@ public class MainActivity extends AppCompatActivity {
         set.setColor(Color.argb(200, 255, 255, 255));
         set.setValueTextColor(Color.rgb(255, 255, 255));
         set.setValueTextSize(10f);
+        set.setValueTypeface(Typeface.SANS_SERIF);
+        ValueFormatter tempValue = new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+                return (int) value + " °";
+            }
+        };
+        set.setValueFormatter(tempValue);
         set.setDrawCubic(true);
         set.setDrawValues(true);
 
@@ -115,12 +117,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private BarData generateRainData() throws JSONException {
-
-        ArrayList<BarEntry> entries = new ArrayList<>();
-
-        for (int i = 0; i < 12; i++) {
-            entries.add(new BarEntry((int) (Math.random() * 5), i));
-        }
 
         BarDataSet set = new BarDataSet(getRain(getJsonObject()), "Zrazky");
         set.setColor(Color.argb(100, 255, 255, 255));

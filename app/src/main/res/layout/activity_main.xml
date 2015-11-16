@@ -393,7 +393,7 @@
         <com.github.mikephil.charting.charts.CombinedChart
             android:id="@+id/combinedChart"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="200dp"
             android:layout_marginTop="900dp"
             android:visibility="visible"/>
     </RelativeLayout>
