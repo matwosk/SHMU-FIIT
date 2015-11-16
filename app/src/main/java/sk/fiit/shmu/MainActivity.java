@@ -17,7 +17,12 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
+
+import static sk.fiit.shmu.JsonParser.getJsonObject;
+import static sk.fiit.shmu.JsonParser.getStationName;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,9 +33,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String name = "";
+
+        try {
+            name = getStationName(getJsonObject());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         combinedChart = (CombinedChart) findViewById(R.id.combinedChart);
         combinedChart.setDrawGridBackground(false);
-        combinedChart.setDescription("");
+        combinedChart.setDescription(name);
+        combinedChart.setDescriptionPosition(250f, 20f);
         combinedChart.setDescriptionColor(Color.rgb(255, 255, 255));
         combinedChart.setNoDataTextDescription("Chybajuce data.");
         combinedChart.setTouchEnabled(true);
