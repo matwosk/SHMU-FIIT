@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -42,21 +41,20 @@ public class MainActivity extends AppCompatActivity {
         YAxis leftAxis = combinedChart.getAxisLeft();
         leftAxis.setAxisMaxValue(50f);
         leftAxis.setAxisMinValue(-20f);
-        leftAxis.setStartAtZero(false);
         leftAxis.setEnabled(false);
 
         YAxis rightAxis = combinedChart.getAxisRight();
         rightAxis.setEnabled(false);
 
-        LimitLine limitLine = new LimitLine(0);
-        limitLine.setLabel("0");
-        limitLine.setTextSize(7f);
-        limitLine.setTextColor(Color.rgb(255, 255, 255));
-        limitLine.setLineColor(Color.rgb(255, 255, 255));
-        leftAxis.addLimitLine(limitLine);
+//        LimitLine limitLine = new LimitLine(0);
+//        limitLine.setLabel("0");
+//        limitLine.setTextSize(7f);
+//        limitLine.setTextColor(Color.rgb(255, 255, 255));
+//        limitLine.setLineColor(Color.rgb(255, 255, 255));
+//        leftAxis.addLimitLine(limitLine);
+//        leftAxis.setDrawLimitLinesBehindData(true);
 
-        leftAxis.setDrawLimitLinesBehindData(true);
-        leftAxis.enableGridDashedLine(10f, 10f, 0f);
+        leftAxis.enableGridDashedLine(1f, 1f, 0f);
 
         XAxis xAxis = combinedChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -64,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         xAxis.setEnabled(true);
 
         CombinedData data = new CombinedData(getHours());
-        data.setData(generateLineData());
+        data.setData(generateTempData());
         data.setData(generateBarData());
 
         combinedChart.setData(data);
@@ -76,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         combinedChart.animateX(2500, Easing.EasingOption.EaseInOutQuart);
     }
 
-    private LineData generateLineData() {
+    private LineData generateTempData() {
 
         ArrayList<Entry> entries = new ArrayList<>();
 
@@ -96,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
         set.setDrawValues(true);
 
         LineData lineData = new LineData();
-        lineData.setValueTextColor(Color.rgb(255, 255, 255));
         lineData.addDataSet(set);
 
         return lineData;
@@ -107,13 +104,14 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<BarEntry> entries = new ArrayList<>();
 
         for (int i = 0; i < 12; i++) {
-            entries.add(new BarEntry((int) (Math.random() * 5) + 10, i));
+            entries.add(new BarEntry((int) (Math.random() * 5), i));
         }
 
-        BarDataSet set = new BarDataSet(entries, "Bar DataSet");
+        BarDataSet set = new BarDataSet(entries, "Zrazky");
         set.setColor(Color.rgb(255, 255, 255));
         set.setValueTextColor(Color.rgb(255, 255, 255));
         set.setValueTextSize(10f);
+        set.setHighLightAlpha(100);
 
         BarData barData = new BarData();
         barData.addDataSet(set);
