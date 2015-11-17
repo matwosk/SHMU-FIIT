@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         xAxis.setTextColor(Color.WHITE);
         xAxis.setGridColor(Color.argb(100, 255, 255, 255));
         xAxis.setAxisLineColor(Color.argb(100, 255, 255, 255));
+        xAxis.enableGridDashedLine(4f, 4f, 0f);
 
         Legend legend = combinedChart.getLegend();
         legend.setEnabled(false);
