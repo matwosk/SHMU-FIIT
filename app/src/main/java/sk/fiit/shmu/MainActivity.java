@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         combinedChart.setDrawGridBackground(false);
         combinedChart.setDescription(name);
         combinedChart.setDescriptionPosition(250f, 20f);
-        combinedChart.setDescriptionColor(Color.rgb(255, 255, 255));
+        combinedChart.setDescriptionColor(Color.WHITE);
         combinedChart.setNoDataTextDescription("Chybajuce data.");
         combinedChart.setTouchEnabled(false);
 
@@ -56,20 +56,14 @@ public class MainActivity extends AppCompatActivity {
         YAxis rightAxis = combinedChart.getAxisRight();
         rightAxis.setEnabled(false);
 
-//        LimitLine limitLine = new LimitLine(0);
-//        limitLine.setLabel("0");
-//        limitLine.setTextSize(7f);
-//        limitLine.setTextColor(Color.rgb(255, 255, 255));
-//        limitLine.setLineColor(Color.rgb(255, 255, 255));
-//        leftAxis.addLimitLine(limitLine);
-//        leftAxis.setDrawLimitLinesBehindData(true);
-
-        leftAxis.enableGridDashedLine(1f, 1f, 0f);
-
         XAxis xAxis = combinedChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextColor(Color.rgb(255, 255, 255));
-        xAxis.setEnabled(true);
+        xAxis.setTextColor(Color.WHITE);
+        xAxis.setGridColor(Color.argb(100, 255, 255, 255));
+        xAxis.setAxisLineColor(Color.argb(100, 255, 255, 255));
+
+        Legend legend = combinedChart.getLegend();
+        legend.setEnabled(false);
 
         CombinedData data = null;
         try {
@@ -82,24 +76,17 @@ public class MainActivity extends AppCompatActivity {
 
         combinedChart.setData(data);
         combinedChart.invalidate();
-
-        Legend l = combinedChart.getLegend();
-        l.setEnabled(false);
-
-        combinedChart.animateX(2500, Easing.EasingOption.EaseInOutQuart);
     }
 
     private LineData generateTempData() throws JSONException {
 
         LineDataSet set = new LineDataSet(getTemperature(getJsonObject()), "Teplota");
-        set.setDrawCircleHole(true);
         set.setLineWidth(2.5f);
         set.setCircleSize(7f);
-        set.setCircleColor(Color.argb(255, 255, 255, 255));
+        set.setCircleColor(Color.WHITE);
         set.setColor(Color.argb(200, 255, 255, 255));
-        set.setValueTextColor(Color.rgb(255, 255, 255));
+        set.setValueTextColor(Color.WHITE);
         set.setValueTextSize(10f);
-        set.setValueTypeface(Typeface.SANS_SERIF);
         ValueFormatter tempValue = new ValueFormatter() {
             @Override
             public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
