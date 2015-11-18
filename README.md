@@ -9,4 +9,4 @@ Android application for showing Aladin weather model like this http://www.shmu.s
 - Showing temperature, rain, wind speed etc..
 
 # Screen
-![alt tag](https://raw.githubusercontent.com/matwosk/SHMU-FIIT/Feature_Charts/app/src/main/res/design/screen.png)
+![alt tag](https://cdn.pbrd.co/images/2dszIigN.png)
